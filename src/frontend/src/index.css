@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Playfair Display - Display Serif */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* DM Sans - Body sans-serif */
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Primary green (navbar/footer/sidebar): #1F3B2A */
+    --primary: 0.28 0.065 148;
+    --primary-foreground: 0.97 0.015 85;
+
+    /* Background warm cream: #F4EAD3 */
+    --background: 0.94 0.035 85;
+    --foreground: 0.2 0.02 148;
+
+    /* Card white */
+    --card: 0.99 0 0;
+    --card-foreground: 0.2 0.02 148;
+
+    /* Popover */
+    --popover: 0.99 0 0;
+    --popover-foreground: 0.2 0.02 148;
+
+    /* Secondary olive green: #3C5A36 */
+    --secondary: 0.38 0.07 148;
+    --secondary-foreground: 0.97 0.015 85;
+
+    /* Muted */
+    --muted: 0.93 0.025 85;
+    --muted-foreground: 0.5 0.02 148;
+
+    /* Gold accent: #C89A3A */
+    --accent: 0.72 0.13 80;
+    --accent-foreground: 0.15 0.03 148;
+
+    /* Terracotta destructive: #B85A3A */
+    --destructive: 0.52 0.15 33;
+    --destructive-foreground: 0.99 0 0;
+
+    /* Border */
+    --border: 0.86 0.03 85;
+    --input: 0.86 0.03 85;
+    --ring: 0.72 0.13 80;
+
+    /* Charts */
+    --chart-1: 0.28 0.065 148;
+    --chart-2: 0.72 0.13 80;
+    --chart-3: 0.52 0.15 33;
+    --chart-4: 0.38 0.07 148;
+    --chart-5: 0.6 0.1 148;
+
+    /* Sidebar - dark green */
+    --sidebar: 0.22 0.06 148;
+    --sidebar-foreground: 0.97 0.015 85;
+    --sidebar-primary: 0.72 0.13 80;
+    --sidebar-primary-foreground: 0.15 0.03 148;
+    --sidebar-accent: 0.28 0.065 148;
+    --sidebar-accent-foreground: 0.97 0.015 85;
+    --sidebar-border: 0.3 0.05 148;
+    --sidebar-ring: 0.72 0.13 80;
+
+    /* Custom tokens */
+    --gold: 0.72 0.13 80;
+    --terracotta: 0.52 0.15 33;
+    --forest-green: 0.22 0.06 148;
+    --cream: 0.94 0.035 85;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "DM Sans", system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+  .font-body {
+    font-family: "DM Sans", system-ui, sans-serif;
+  }
+
+  /* Scrollbar styling */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: oklch(var(--border));
+    border-radius: 2px;
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    .print-only {
+      display: block !important;
+    }
+  }
+
+  /* Corner decorative pattern */
+  .corner-pattern {
+    position: relative;
+  }
+  .corner-pattern::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-image: url("/assets/generated/mandala-corner-transparent.dim_400x400.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .corner-pattern::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background-image: url("/assets/generated/mandala-corner-transparent.dim_400x400.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(180deg);
+  }
+}
